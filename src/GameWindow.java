@@ -45,12 +45,14 @@ public class GameWindow {
         window.add(panel2, BorderLayout.SOUTH);
 
 
-        window.setPreferredSize(new Dimension(maze.mazeLength, maze.mazeLength + 100));
+       // window.setPreferredSize(new Dimension(maze.mazeLength, maze.mazeLength + 100));
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
-        window.setLocationRelativeTo(null);
+        window.setFocusable(true);
+        
         window.setResizable(false);
         window.pack();
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
 
         
         minute = 2 * level;

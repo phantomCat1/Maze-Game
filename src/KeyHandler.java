@@ -8,7 +8,7 @@ public class KeyHandler implements KeyListener {
     boolean wKey;
     boolean sKey;
     boolean aKey;
-    boolean dKey = true;
+    boolean dKey;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -20,6 +20,7 @@ public class KeyHandler implements KeyListener {
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_W) {
             wKey = true;
+            System.out.println("workssss");
         } 
         if (code == KeyEvent.VK_S) {
             sKey = true;

@@ -17,7 +17,7 @@ public class Main {
         Maze bruh = new Maze(5);
         bruh.startGameThread();
         window.add(bruh, BorderLayout.NORTH);
-        window.setPreferredSize(new Dimension(1000, bruh.mazeLength));
+        window.setPreferredSize(new Dimension(bruh.mazeLength, bruh.mazeLength));
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
         window.setLocationRelativeTo(null);
