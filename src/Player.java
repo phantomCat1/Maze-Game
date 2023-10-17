@@ -1,25 +1,48 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 
 public class Player {
     int posX;
     int posY;
     final int speed = 5;
     Maze board;
-    //KeyHandler key = new KeyHandler();
+    KeyHandler key = new KeyHandler();
     BufferedImage normal;
     BufferedImage left;
     BufferedImage right;
     int pixelCount = 0;
     int animation = 1;
     boolean movement;
+    JPanel panel;
+    Action upAction;
+	Action downAction;
+	Action leftAction;
+	Action rightAction;
 
     public Player(Maze maze) {
         this.board = maze;
+        panel = new JPanel();
+        panel.setBackground(Color.black);
+        panel.setBounds(20, 20, 48, 48);
+        upAction = new UpAction();
+		downAction = new DownAction();
+		leftAction = new LeftAction();
+		rightAction = new RightAction();
+        panel.getInputMap().put(KeyStroke.getKeyStroke('w'), "upAction");
+		panel.getActionMap().put("upAction", upAction);
+		panel.getInputMap().put(KeyStroke.getKeyStroke('s'), "downAction");
+		panel.getActionMap().put("downAction", downAction);
+		panel.getInputMap().put(KeyStroke.getKeyStroke('a'), "leftAction");
+		panel.getActionMap().put("leftAction", leftAction);
+		panel.getInputMap().put(KeyStroke.getKeyStroke('d'), "rightAction");
+		panel.getActionMap().put("rightAction", rightAction);
+        board.add(panel);
         //this.key
         posX = 20;
         posY = 20;
@@ -34,9 +57,42 @@ public class Player {
 
     }
 
+    public class UpAction extends AbstractAction{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			posY -= speed;
+            panel.setLocation(posX, posY);
+		}		
+	}
+	public class DownAction extends AbstractAction{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			posY += speed;	
+            panel.setLocation(posX, posY);
+		}		
+	}
+	public class LeftAction extends AbstractAction{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			posX -= speed;	
+            panel.setLocation(posX, posY);
+		}		
+	}
+	public class RightAction extends AbstractAction{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			posX += speed;
+            panel.setLocation(posX, posY);
+		}		
+	}
+
     public void update() {
         movement = false;
-       /*  if (key.wKey) {
+         if (key.wKey) {
             posY -= speed;
             movement = true;
         } else if (key.sKey) {
@@ -48,7 +104,7 @@ public class Player {
         } else if (key.dKey) {
             posX += speed;
             movement = true;
-        }*/
+        }
 
         
         
@@ -80,6 +136,8 @@ public class Player {
                 g.drawImage(right, posX, posY, board.tileSize, board.tileSize, null);
         }
         }
+
+        panel.setLocation(posX, posY);
         
         
         

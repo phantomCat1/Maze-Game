@@ -63,7 +63,7 @@ public class Maze extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        player.draw(g2);
+       player.draw(g2);
         g.dispose();
 
 
