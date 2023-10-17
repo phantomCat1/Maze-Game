@@ -12,7 +12,7 @@ public class Player {
     int posY;
     final int speed = 5;
     Maze board;
-    KeyHandler key = new KeyHandler();
+    KeyHandler key;
     BufferedImage normal;
     BufferedImage left;
     BufferedImage right;
@@ -25,12 +25,13 @@ public class Player {
 	Action leftAction;
 	Action rightAction;
 
-    public Player(Maze maze) {
+    public Player(Maze maze, KeyHandler keyH) {
         this.board = maze;
+        this.key = keyH;
         panel = new JPanel();
         panel.setBackground(Color.black);
         panel.setBounds(20, 20, 48, 48);
-        upAction = new UpAction();
+        /*upAction = new UpAction();
 		downAction = new DownAction();
 		leftAction = new LeftAction();
 		rightAction = new RightAction();
@@ -42,7 +43,8 @@ public class Player {
 		panel.getActionMap().put("leftAction", leftAction);
 		panel.getInputMap().put(KeyStroke.getKeyStroke('d'), "rightAction");
 		panel.getActionMap().put("rightAction", rightAction);
-        board.add(panel);
+        board.add(panel);*/
+        
         //this.key
         posX = 20;
         posY = 20;
@@ -57,7 +59,7 @@ public class Player {
 
     }
 
-    public class UpAction extends AbstractAction{
+   /*  public class UpAction extends AbstractAction{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -88,11 +90,12 @@ public class Player {
 			posX += speed;
             panel.setLocation(posX, posY);
 		}		
-	}
+	}*/
 
     public void update() {
         movement = false;
-         if (key.wKey) {
+        
+        if (key.wKey) {
             posY -= speed;
             movement = true;
         } else if (key.sKey) {
@@ -125,7 +128,7 @@ public class Player {
 
 
     public void draw(Graphics2D g) {
-       // g.setColor(Color.white);
+        //g.setColor(Color.white);
         //g.fillRect(posX, posY, board.tileSize, board.tileSize);
         if (!movement) {
             g.drawImage(normal, posX, posY, board.tileSize, board.tileSize, null);
@@ -137,7 +140,7 @@ public class Player {
         }
         }
 
-        panel.setLocation(posX, posY);
+        //panel.setLocation(posX, posY);
         
         
         

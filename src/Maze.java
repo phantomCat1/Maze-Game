@@ -13,17 +13,20 @@ public class Maze extends JPanel implements Runnable {
     public final int tileSize = 48;
     Thread gameThread;
     int fps = 30;
-    //KeyHandler key = new KeyHandler();
-    Player player = new Player(this);
+    KeyHandler key;
+    Player player;
 
 
     public Maze(int level) {
         mazeLength = tileSize * level;
         maze = new char[level][level];
+        key = new KeyHandler();
+        player = new Player(this, key);
         this.setPreferredSize(new Dimension(mazeLength, mazeLength));
-        this.setBackground(Color.PINK);
+        this.setBackground(Color.green);
         this.setDoubleBuffered(true);
         this.setFocusable(true);
+        
 
     }
     public void startGameThread() {
@@ -63,8 +66,8 @@ public class Maze extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-       player.draw(g2);
-        g.dispose();
+        player.draw(g2);
+        //g.dispose();
 
 
     }

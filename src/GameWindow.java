@@ -45,7 +45,7 @@ public class GameWindow {
         window.add(panel2, BorderLayout.SOUTH);
 
 
-        window.setPreferredSize(new Dimension(1000, maze.mazeLength + 100));
+        window.setPreferredSize(new Dimension(maze.mazeLength, maze.mazeLength + 100));
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
         window.setLocationRelativeTo(null);

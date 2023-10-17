@@ -4,11 +4,11 @@ import java.awt.event.KeyListener;
 /**
  * This method checks if movement keys are pressed.
  */
-public class KeyHandler implements KeyListener{
+public class KeyHandler implements KeyListener {
     boolean wKey;
     boolean sKey;
     boolean aKey;
-    boolean dKey;
+    boolean dKey = true;
 
     @Override
     public void keyTyped(KeyEvent e) {
