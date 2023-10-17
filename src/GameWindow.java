@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class GameWindow {
     JFrame window;
-    JPanel panel1;
+    Maze maze;
     JPanel panel2;
     JButton restartButton;
     JLabel timeLabel;
@@ -24,26 +24,28 @@ public class GameWindow {
 
     public GameWindow() {
         window = new JFrame("Maze Game");
-        panel1 = new JPanel();
+        
         panel2 = new JPanel();
         restartButton = new JButton("Restart Level");
         timeLabel = new JLabel("bruh");
     }
 
     public void mazeGame(int level) {
-        
+
+        maze = new Maze(level * 5);
+        maze.startGameThread();
         currentLevel = level;
         restartButton.setFocusable(false);
-        panel2.setPreferredSize(new Dimension(800, 100));
+        panel2.setPreferredSize(new Dimension(maze.mazeLength, 100));
         panel2.setLayout(new GridLayout(1, 2));
         panel2.add(restartButton);
         timeLabel.setHorizontalAlignment(JLabel.CENTER);
         panel2.add(timeLabel);
-        window.add(panel1);
+        window.add(maze, BorderLayout.NORTH);
         window.add(panel2, BorderLayout.SOUTH);
 
 
-        window.setPreferredSize(new Dimension(800, 800));
+        window.setPreferredSize(new Dimension(1000, maze.mazeLength + 100));
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
         window.setLocationRelativeTo(null);
@@ -133,6 +135,7 @@ public class GameWindow {
             public void actionPerformed(ActionEvent e) {
                 loseFrame.dispose();
                 window.dispose();
+                maze.gameThread = null;
                 new Levels().loadLevels();
             }
         });
