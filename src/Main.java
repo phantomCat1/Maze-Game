@@ -15,7 +15,7 @@ public class Main {
         new StartMenu().startGame();
         JFrame window = new JFrame("mze");
         Maze bruh = new Maze(5);
-        bruh.startGameThread();
+        
         window.add(bruh, BorderLayout.NORTH);
         window.setPreferredSize(new Dimension(1000, bruh.mazeLength));
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

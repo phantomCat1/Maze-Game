@@ -27,13 +27,13 @@ public class GameWindow {
         
         panel2 = new JPanel();
         restartButton = new JButton("Restart Level");
-        timeLabel = new JLabel("bruh");
+        timeLabel = new JLabel("Start");
     }
 
     public void mazeGame(int level) {
 
         maze = new Maze(level * 5);
-        maze.startGameThread();
+    
         currentLevel = level;
         restartButton.setFocusable(false);
         panel2.setPreferredSize(new Dimension(maze.mazeLength, 100));
@@ -57,6 +57,12 @@ public class GameWindow {
         second = 0;
         countdownTimer();
         timer.start();
+
+        restartButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                restartLevel();
+            }
+        });
 
 
 
@@ -135,7 +141,7 @@ public class GameWindow {
             public void actionPerformed(ActionEvent e) {
                 loseFrame.dispose();
                 window.dispose();
-                maze.gameThread = null;
+                //maze.timer.stop();
                 new Levels().loadLevels();
             }
         });
