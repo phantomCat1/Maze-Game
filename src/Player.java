@@ -33,6 +33,8 @@ public class Player {
         label = new JLabel();
         label.setBackground(Color.white);
         label.setBounds(posX, posY, 48, 48);
+        label.setOpaque(true);
+        board.add(label);
 
     }
     public void update() {
@@ -49,6 +51,7 @@ public class Player {
 
     }
     public void draw(Graphics2D g) {
+        board.add(label);
         label.setLocation(posX, posY);
         
     }
