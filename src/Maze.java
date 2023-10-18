@@ -24,6 +24,7 @@ public class Maze extends JPanel implements Runnable {
         mazeLength = tileSize * level;
         maze = new int[level][level];
         key = new KeyHandler();
+        this.addKeyListener(key);
         player = new Player(this, key);
         this.setPreferredSize(new Dimension(mazeLength, mazeLength));
         this.setBackground(Color.green);

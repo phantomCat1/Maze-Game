@@ -13,7 +13,7 @@ import javax.swing.plaf.BorderUIResource;
 public class Main {
     public static void main(String[] args) {
         new StartMenu().startGame();
-        JFrame window = new JFrame("mze");
+       /*  JFrame window = new JFrame("mze");
         Maze bruh = new Maze(5);
         bruh.startGameThread();
         window.add(bruh, BorderLayout.NORTH);
@@ -22,7 +22,7 @@ public class Main {
         window.setVisible(true);
         window.setLocationRelativeTo(null);
         window.setResizable(false);
-        window.pack();
+        window.pack();*/
       
     }
     

@@ -20,6 +20,7 @@ public class GameWindow {
     String ddMinute;
     DecimalFormat dFormat = new DecimalFormat("00");
     int currentLevel;
+   
     
 
     public GameWindow() {
@@ -35,7 +36,7 @@ public class GameWindow {
         maze = new Maze(level * 5);
         maze.startGameThread();
         currentLevel = level;
-        restartButton.setFocusable(false);
+        restartButton.setFocusable(true);
         panel2.setPreferredSize(new Dimension(maze.mazeLength, 100));
         panel2.setLayout(new GridLayout(1, 2));
         panel2.add(restartButton);
@@ -69,6 +70,8 @@ public class GameWindow {
 
 
     }
+
+    
 
     public void restartLevel() {
         //if restart button clicked restart level

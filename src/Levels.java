@@ -102,7 +102,8 @@ public class Levels {
 
     public void loadGame(int level) {
         levelMenu.dispose();
-        new GameWindow().mazeGame(level);
+        GameWindow game = new GameWindow();
+        game.mazeGame(level);
     }
 
     public void resetGame() {
