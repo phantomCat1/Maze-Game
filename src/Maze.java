@@ -30,6 +30,7 @@ public class Maze extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.setFocusable(true);
         
+        
 
     }
     public void startGameThread() {

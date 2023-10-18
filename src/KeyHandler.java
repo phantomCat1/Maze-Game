@@ -20,7 +20,6 @@ public class KeyHandler implements KeyListener {
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_W) {
             wKey = true;
-            System.out.println("workssss");
         } 
         if (code == KeyEvent.VK_DOWN) {
             sKey = true;
