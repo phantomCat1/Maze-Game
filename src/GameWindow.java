@@ -36,7 +36,7 @@ public class GameWindow {
         maze = new Maze(level * 5);
         maze.startGameThread();
         currentLevel = level;
-        restartButton.setFocusable(true);
+        restartButton.setFocusable(false);
         panel2.setPreferredSize(new Dimension(maze.mazeLength, 100));
         panel2.setLayout(new GridLayout(1, 2));
         panel2.add(restartButton);
@@ -48,12 +48,12 @@ public class GameWindow {
 
        // window.setPreferredSize(new Dimension(maze.mazeLength, maze.mazeLength + 100));
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setFocusable(true);
+        window.setFocusable(false);
         
         window.setResizable(false);
-        window.pack();
         window.setLocationRelativeTo(null);
         window.setVisible(true);
+        window.pack();
 
         
         minute = 2 * level;

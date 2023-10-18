@@ -25,9 +25,9 @@ public class Player {
 	Action leftAction;
 	Action rightAction;
 
-    public Player(Maze maze, KeyHandler keyH) {
+    public Player(Maze maze) {
         this.board = maze;
-        this.key = keyH;
+       //this.key = keyH;
         panel = new JPanel();
         panel.setBackground(Color.black);
         panel.setBounds(20, 20, 48, 48);
@@ -95,16 +95,16 @@ public class Player {
     public void update() {
         movement = false;
         
-        if (key.wKey) {
+        if (board.w) {
             posY -= speed;
             movement = true;
-        } else if (key.sKey) {
+        } else if (board.s) {
             posY += speed;
             movement = true;
-        } else if (key.aKey) {
+        } else if (board.a) {
             posX -= speed;
             movement = true;
-        } else if (key.dKey) {
+        } else if (board.d) {
             posX += speed;
             movement = true;
         }
