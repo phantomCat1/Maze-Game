@@ -27,7 +27,7 @@ public class GameWindow {
         
         panel2 = new JPanel();
         restartButton = new JButton("Restart Level");
-        timeLabel = new JLabel("bruh");
+        timeLabel = new JLabel("Start");
     }
 
     public void mazeGame(int level) {
@@ -59,6 +59,12 @@ public class GameWindow {
         second = 0;
         countdownTimer();
         timer.start();
+
+        restartButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                restartLevel();
+            }
+        });
 
 
 

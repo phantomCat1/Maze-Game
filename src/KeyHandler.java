@@ -22,7 +22,7 @@ public class KeyHandler implements KeyListener {
             wKey = true;
             System.out.println("workssss");
         } 
-        if (code == KeyEvent.VK_S) {
+        if (code == KeyEvent.VK_DOWN) {
             sKey = true;
         }
         if (code == KeyEvent.VK_A) {
