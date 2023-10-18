@@ -24,15 +24,32 @@ public class Player {
 	Action downAction;
 	Action leftAction;
 	Action rightAction;
+    JLabel label;
 
     public Player(Maze maze) {
+        posX =20;
+        posY = 20;
         this.board = maze;
+        label = new JLabel();
+        label.setBackground(Color.white);
+        label.setBounds(posX, posY, 48, 48);
 
     }
     public void update() {
+        if (board.w) {
+            posY -= speed;
+            System.out.println("mmmm");
+        } else if (board.s) {
+            posY += speed; 
+        } else if (board.a) {
+            posX -= speed;
+        } else if (board.s) {
+            posX += speed;
+        }
 
     }
     public void draw(Graphics2D g) {
+        label.setLocation(posX, posY);
         
     }
 
