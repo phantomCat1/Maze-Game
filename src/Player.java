@@ -3,7 +3,6 @@ import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -20,10 +19,7 @@ public class Player {
     int animation = 1;
     boolean movement;
     JPanel panel;
-    Action upAction;
-	Action downAction;
-	Action leftAction;
-	Action rightAction;
+    
 
     public Player(Maze maze, KeyHandler keyH) {
         this.board = maze;
@@ -31,21 +27,8 @@ public class Player {
         panel = new JPanel();
         panel.setBackground(Color.black);
         panel.setBounds(20, 20, 48, 48);
-        /*upAction = new UpAction();
-		downAction = new DownAction();
-		leftAction = new LeftAction();
-		rightAction = new RightAction();
-        panel.getInputMap().put(KeyStroke.getKeyStroke('w'), "upAction");
-		panel.getActionMap().put("upAction", upAction);
-		panel.getInputMap().put(KeyStroke.getKeyStroke('s'), "downAction");
-		panel.getActionMap().put("downAction", downAction);
-		panel.getInputMap().put(KeyStroke.getKeyStroke('a'), "leftAction");
-		panel.getActionMap().put("leftAction", leftAction);
-		panel.getInputMap().put(KeyStroke.getKeyStroke('d'), "rightAction");
-		panel.getActionMap().put("rightAction", rightAction);
-        board.add(panel);*/
+       
         
-        //this.key
         posX = 20;
         posY = 20;
         try {
@@ -59,38 +42,7 @@ public class Player {
 
     }
 
-   /*  public class UpAction extends AbstractAction{
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			posY -= speed;
-            panel.setLocation(posX, posY);
-		}		
-	}
-	public class DownAction extends AbstractAction{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			posY += speed;	
-            panel.setLocation(posX, posY);
-		}		
-	}
-	public class LeftAction extends AbstractAction{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			posX -= speed;	
-            panel.setLocation(posX, posY);
-		}		
-	}
-	public class RightAction extends AbstractAction{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			posX += speed;
-            panel.setLocation(posX, posY);
-		}		
-	}*/
 
     public void update() {
         movement = false;
@@ -139,11 +91,6 @@ public class Player {
                 g.drawImage(right, posX, posY, board.tileSize, board.tileSize, null);
         }
         }
-
-        //panel.setLocation(posX, posY);
-        
-        
-        
 
     }
 
