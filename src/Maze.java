@@ -8,7 +8,7 @@ import javax.swing.*;
  * 
  */
 
-public class Maze extends JPanel implements Runnable, KeyListener {
+public class Maze extends JPanel implements Runnable {
     int mazeLength;
     int[][] maze;
     final int scale = 3;
@@ -27,9 +27,9 @@ public class Maze extends JPanel implements Runnable, KeyListener {
         this.size = level;
         mazeLength = tileSize * level;
         maze = new int[level][level];
-        //key = new KeyHandler();
-        this.addKeyListener(this);
-        player = new Player(this);
+        key = new KeyHandler();
+        this.addKeyListener(key);
+        player = new Player(this, key);
         this.setPreferredSize(new Dimension(mazeLength, mazeLength));
         this.setBackground(Color.green);
         this.setDoubleBuffered(true);
@@ -88,42 +88,6 @@ public class Maze extends JPanel implements Runnable, KeyListener {
 
 
     }
-    @Override
-    public void keyTyped(KeyEvent e) {
-        
-    }
-    @Override
-    public void keyPressed(KeyEvent e) {
-        int code = e.getKeyCode();
-        if (code == KeyEvent.VK_W) {
-            w = true;
-            System.out.println("brrrr");
-        } 
-        if (code == KeyEvent.VK_S) {
-            s = true;
-        }
-        if (code == KeyEvent.VK_A) {
-            a = true;
-        }
-        if (code == KeyEvent.VK_D) {
-            d = true;
-        }
-    }
-    @Override
-    public void keyReleased(KeyEvent e) {
-        int code = e.getKeyCode();
-        if (code == KeyEvent.VK_W) {
-            w = false;
-        } 
-        if (code == KeyEvent.VK_S) {
-            s = false;
-        }
-        if (code == KeyEvent.VK_A) {
-            a = false;
-        }
-        if (code == KeyEvent.VK_D) {
-            d = false;
-        }
-    }
-
+    
 }
+

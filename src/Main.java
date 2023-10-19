@@ -16,7 +16,7 @@ public class Main {
         new StartMenu().startGame();
         JPanel panel = new JPanel();
         
-        JFrame window = new JFrame("mze");
+        /*JFrame window = new JFrame("mze");
         Maze bruh = new Maze(10);
         panel.setPreferredSize(new Dimension(bruh.mazeLength, 100));
         panel.setBackground(Color.pink);
@@ -29,7 +29,7 @@ public class Main {
         window.setVisible(true);
         window.setLocationRelativeTo(null);
         window.setResizable(false);
-        window.pack();
+        window.pack();*/
       
     }
     

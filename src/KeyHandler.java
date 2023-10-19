@@ -21,7 +21,7 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_W) {
             wKey = true;
         } 
-        if (code == KeyEvent.VK_DOWN) {
+        if (code == KeyEvent.VK_S) {
             sKey = true;
         }
         if (code == KeyEvent.VK_A) {
