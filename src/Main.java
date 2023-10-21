@@ -23,7 +23,6 @@ public class Main {
         bruh.startGameThread();
         window.add(panel, BorderLayout.SOUTH);
         window.add(bruh, BorderLayout.NORTH);
-        
         window.setPreferredSize(new Dimension(bruh.mazeLength, bruh.mazeLength));
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);

@@ -29,12 +29,12 @@ public class Player {
         panel.setBounds(20, 20, 48, 48);
        
         
-        posX = 20;
-        posY = 20;
+        posX = 48;
+        posY = 48;
         try {
-            normal = ImageIO.read(new File("C:\\Users\\20232049\\OneDrive - TU Eindhoven\\Documents\\MazeGame\\Character\\pixel_ch_normal.png"));
-            left = ImageIO.read(new File("C:\\Users\\20232049\\OneDrive - TU Eindhoven\\Documents\\MazeGame\\Character\\pixel_ch_left.png"));
-            right = ImageIO.read(new File("C:\\Users\\20232049\\OneDrive - TU Eindhoven\\Documents\\MazeGame\\Character\\pixel_ch_right.png"));
+            normal = ImageIO.read(getClass().getResource("pixel_ch_normal.png"));
+            left = ImageIO.read(getClass().getResource("pixel_ch_left.png"));
+            right = ImageIO.read(getClass().getResource("pixel_ch_right.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

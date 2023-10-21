@@ -31,7 +31,7 @@ public class Maze extends JPanel implements Runnable {
         player = new Player(this, key);
         mazeCreate = new MazeCreator(this, level);
         this.setPreferredSize(new Dimension(mazeLength, mazeLength));
-        this.setBackground(Color.green);
+        this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.setFocusable(true);
         //this.setFocusTraversalKeysEnabled(true);
