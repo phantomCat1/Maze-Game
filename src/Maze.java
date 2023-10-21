@@ -10,26 +10,26 @@ import javax.swing.*;
 
 public class Maze extends JPanel implements Runnable {
     int mazeLength;
-    int[][] maze;
     final int scale = 3;
     final int originalTileSize = 16;
     public final int tileSize = 48;
     Thread gameThread;
     int fps = 30;
     KeyHandler key;
+    MazeCreator mazeCreate;
     Player player;
     int size;
-    boolean w,a,s,d;
+    
     
 
 
     public Maze(int level) {
         this.size = level;
         mazeLength = tileSize * level;
-        maze = new int[level][level];
         key = new KeyHandler();
         this.addKeyListener(key);
         player = new Player(this, key);
+        mazeCreate = new MazeCreator(this, level);
         this.setPreferredSize(new Dimension(mazeLength, mazeLength));
         this.setBackground(Color.green);
         this.setDoubleBuffered(true);
@@ -77,6 +77,7 @@ public class Maze extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        mazeCreate.draw(g2);
         player.draw(g2);
         g.dispose();
 

@@ -37,7 +37,7 @@ public class GameWindow {
         maze.startGameThread();
         currentLevel = level;
         restartButton.setFocusable(false);
-        panel2.setPreferredSize(new Dimension(maze.mazeLength, 100));
+        panel2.setPreferredSize(new Dimension(maze.mazeLength, 50));
         panel2.setLayout(new GridLayout(1, 2));
         panel2.add(restartButton);
         timeLabel.setHorizontalAlignment(JLabel.CENTER);
