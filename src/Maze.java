@@ -13,28 +13,34 @@ public class Maze extends JPanel implements Runnable {
     final int scale = 3;
     final int originalTileSize = 16;
     public final int tileSize = 48;
-    Thread gameThread;
+    public Thread gameThread;
     int fps = 30;
     KeyHandler key;
     MazeCreator mazeCreate;
     Player player;
-    int size;
+    int lev;
+    CollisionChecker checker;
+    int coinsCollected = 0;
+    int coinsExpected;
+    GameWindow gw;
     
     
 
 
-    public Maze(int level) {
-        this.size = level;
+    public Maze(int level, GameWindow gww) {
+        this.lev = level;
+        this.gw = gww;
         mazeLength = tileSize * level;
+        coinsExpected = (level / 5) * 2;
         key = new KeyHandler();
         this.addKeyListener(key);
-        player = new Player(this, key);
         mazeCreate = new MazeCreator(this, level);
+        checker = new CollisionChecker(this);
+        player = new Player(this, key, gw);
         this.setPreferredSize(new Dimension(mazeLength, mazeLength));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.setFocusable(true);
-        //this.setFocusTraversalKeysEnabled(true);
         this.requestFocus(true);
         
         

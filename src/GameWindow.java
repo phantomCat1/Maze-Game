@@ -1,5 +1,9 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import javax.swing.*;
 
@@ -33,7 +37,7 @@ public class GameWindow {
 
     public void mazeGame(int level) {
 
-        maze = new Maze(level * 5);
+        maze = new Maze(level * 5, this);
         maze.startGameThread();
         currentLevel = level;
         restartButton.setFocusable(false);
@@ -98,6 +102,7 @@ public class GameWindow {
                 }
                 if (minute == 0 && second == 0) {
                     timer.stop();
+                    maze.gameThread = null;
                     loseWindow();
                 }
             }
@@ -110,6 +115,64 @@ public class GameWindow {
         //press next level to move to next level
         //change txt file to have the new level
         //maybe implement this as a new class entirely
+        //window.dispose();
+        try {
+            PrintWriter print = new PrintWriter(new FileOutputStream("PlayableLevels.txt"));
+            String newLevel = String.valueOf(currentLevel + 1);
+            print.print(newLevel);
+            print.flush();
+            print.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        JFrame winFrame = new JFrame("Maze Game");
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(1, 2));
+        JButton menu = new JButton("Menu");
+        JButton nextLevel = new JButton("Next Level");
+        JLabel label1 = new JLabel("YOU WON");
+        label1.setHorizontalAlignment(JLabel.CENTER);
+        JLabel label2 = new JLabel("You Completed the Game");
+        label2.setHorizontalAlignment(JLabel.CENTER);
+
+        if (currentLevel == 3) {
+            winFrame.add(label2);
+            winFrame.add(menu, BorderLayout.SOUTH);
+        } else {
+            panel.add(menu);
+            panel.add(nextLevel);
+            winFrame.add(label1);
+            winFrame.add(panel, BorderLayout.SOUTH);
+        }
+
+        winFrame.setPreferredSize(new Dimension(300, 400));
+        winFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        winFrame.setVisible(true);
+        winFrame.setLocationRelativeTo(null);
+        winFrame.setResizable(false);
+        winFrame.pack();
+
+        menu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                timer.stop();
+                winFrame.dispose();
+                window.dispose();
+                
+                new Levels().loadLevels();
+            }
+        });
+
+        nextLevel.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                timer.stop();
+                winFrame.dispose();
+                window.dispose();
+                new GameWindow().mazeGame(currentLevel + 1);
+
+            }
+        });
+
     }
 
     public void loseWindow() {

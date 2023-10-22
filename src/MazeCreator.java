@@ -26,10 +26,10 @@ public class MazeCreator {
         mazeGrid = new int[level][level];
 
         try {
-            wallTile = ImageIO.read(getClass().getResource("wallTile.png"));
-            grassTile = ImageIO.read(getClass().getResource("grassTile.png"));
-            trophyTile = ImageIO.read(getClass().getResource("trophyTile.png"));
-            coinTile = ImageIO.read(getClass().getResource("coin.png"));
+            wallTile = ImageIO.read(getClass().getResource("/Character/wallTile.png"));
+            grassTile = ImageIO.read(getClass().getResource("/Character/grassTile.png"));
+            trophyTile = ImageIO.read(getClass().getResource("Character/trophyTile.png"));
+            coinTile = ImageIO.read(getClass().getResource("Character/coin.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -78,7 +78,6 @@ public class MazeCreator {
             }
             posY += maze.tileSize;
             posX = 0;
-            System.out.println(mazeGrid[1][3]);
             
         }
         
