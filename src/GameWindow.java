@@ -55,9 +55,10 @@ public class GameWindow {
         window.setFocusable(false);
         
         window.setResizable(false);
+        window.pack();
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-        window.pack();
+        
 
         
         minute = 2 * level;
@@ -148,10 +149,11 @@ public class GameWindow {
 
         winFrame.setPreferredSize(new Dimension(300, 400));
         winFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        winFrame.setVisible(true);
-        winFrame.setLocationRelativeTo(null);
-        winFrame.setResizable(false);
         winFrame.pack();
+        winFrame.setLocationRelativeTo(null);
+        winFrame.setVisible(true);
+        winFrame.setResizable(false);
+        
 
         menu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -192,10 +194,11 @@ public class GameWindow {
 
         loseFrame.setPreferredSize(new Dimension(300, 400));
         loseFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        loseFrame.setVisible(true);
-        loseFrame.setLocationRelativeTo(null);
-        loseFrame.setResizable(false);
         loseFrame.pack();
+        loseFrame.setLocationRelativeTo(null);
+        loseFrame.setVisible(true);
+        loseFrame.setResizable(false);
+        
 
         retry.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

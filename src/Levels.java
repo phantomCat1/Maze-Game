@@ -36,10 +36,11 @@ public class Levels {
         levelMenu.add(resetGame);
         levelMenu.setPreferredSize(new Dimension(500, 500));
         levelMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        levelMenu.setVisible(true);
-        levelMenu.setLocationRelativeTo(null);
-        levelMenu.setResizable(false);
         levelMenu.pack();
+        levelMenu.setLocationRelativeTo(null);
+        levelMenu.setVisible(true);
+        levelMenu.setResizable(false);
+        
         level1.setFocusable(false);
         level2.setFocusable(false);
         level3.setFocusable(false);

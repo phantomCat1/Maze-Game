@@ -90,11 +90,6 @@ public class Maze extends JPanel implements Runnable {
 
     }
 
-    public void createMaze() {
-
-
-
-    }
     
 }
 

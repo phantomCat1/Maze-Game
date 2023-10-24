@@ -32,18 +32,14 @@ public class CollisionChecker {
         // something happens 
         if (player.key.sKey) {
             hitBoxBottomRow = (hitBoxBottomY + player.speed) / maze.tileSize;
-            tile1 = maze.mazeCreate.mazeGrid[hitBoxBottomRow][hitBoxLeftCol];
+            tile1 = 
             tile2 = maze.mazeCreate.mazeGrid[hitBoxBottomRow][hitBoxRightCol];
             if (tile1 == 2 || tile2 == 2) {
                 player.collisionOn = true;
             }
-            if (tile1 == 4 || tile2 == 4) {
+            if (tile1 == 4 && tile2 == 4) {
                 player.coinTouched = true;
-                if (tile1 == 4) {
-                    maze.mazeCreate.mazeGrid[hitBoxBottomRow][hitBoxLeftCol] = 0;
-                } else if (tile2 == 4) {
-                    maze.mazeCreate.mazeGrid[hitBoxBottomRow][hitBoxRightCol] = 0;
-                }
+                maze.mazeCreate.mazeGrid[hitBoxBottomRow][hitBoxLeftCol] = 0;
                 
             }
             if (tile1 == 8 || tile2 == 8) {
@@ -59,13 +55,9 @@ public class CollisionChecker {
             if (tile1 == 2 || tile2 == 2) {
                 player.collisionOn = true;
             }
-            if (tile1 == 4 || tile2 == 4) {
+            if (tile1 == 4 && tile2 == 4) {
                 player.coinTouched = true;
-                if (tile1 == 4) {
-                    maze.mazeCreate.mazeGrid[hitBoxTopRow][hitBoxLeftCol] = 0;
-                } else if (tile2 == 4) {
-                    maze.mazeCreate.mazeGrid[hitBoxTopRow][hitBoxRightCol] = 0;
-                }
+                maze.mazeCreate.mazeGrid[hitBoxTopRow][hitBoxLeftCol] = 0;
             }
             if (tile1 == 8 || tile2 == 8) {
                 player.reachedEnd = true;
@@ -80,13 +72,9 @@ public class CollisionChecker {
             if (tile1 == 2 || tile2 == 2) {
                 player.collisionOn = true;
             }
-            if (tile1 == 4 || tile2 == 4) {
+            if (tile1 == 4 && tile2 == 4) {
                 player.coinTouched = true;
-                if (tile1 == 4) {
-                    maze.mazeCreate.mazeGrid[hitBoxTopRow][hitBoxLeftCol] = 0;
-                } else if (tile2 == 4) {
-                    maze.mazeCreate.mazeGrid[hitBoxBottomRow][hitBoxLeftCol] = 0;
-                }
+                maze.mazeCreate.mazeGrid[hitBoxTopRow][hitBoxLeftCol] = 0;
                 
             }
             if (tile1 == 8 || tile2 == 8) {
@@ -102,13 +90,9 @@ public class CollisionChecker {
             if (tile1 == 2 || tile2 == 2) {
                 player.collisionOn = true;
             }
-            if (tile1 == 4 || tile2 == 4) {
+            if (tile1 == 4 && tile2 == 4) {
                 player.coinTouched = true;
-                if (tile1 == 4) {
-                    maze.mazeCreate.mazeGrid[hitBoxTopRow][hitBoxRightCol] = 0;
-                } else if (tile2 == 4) {
-                    maze.mazeCreate.mazeGrid[hitBoxBottomRow][hitBoxRightCol] = 0;
-                }
+                maze.mazeCreate.mazeGrid[hitBoxTopRow][hitBoxRightCol] = 0;
                 
             }
             if (tile1 == 8 || tile2 == 8) {

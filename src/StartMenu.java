@@ -43,10 +43,11 @@ public class StartMenu  {
 
         
         startMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        startMenu.setVisible(true);
-        startMenu.setLocationRelativeTo(null);
-        startMenu.setResizable(false);
         startMenu.pack();
+        startMenu.setLocationRelativeTo(null);
+        startMenu.setVisible(true);
+        startMenu.setResizable(false);
+        
 
         playButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
