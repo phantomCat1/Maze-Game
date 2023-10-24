@@ -8,6 +8,7 @@ import javax.swing.*;
 
 public class StartMenu  {
     JFrame startMenu;
+    JPanel panel;
     JButton playButton;
     JButton instructionButton;
     JLabel instructions;
@@ -17,6 +18,7 @@ public class StartMenu  {
      */
     public StartMenu() {
         startMenu = new JFrame("Maze Game");
+        panel = new JPanel();
         playButton = new JButton("Play Game");
         instructionButton = new JButton("Instructions");
     
@@ -27,12 +29,23 @@ public class StartMenu  {
     */
 
     public void startGame() {
-        startMenu.setPreferredSize(new Dimension(500, 500));
-        startMenu.setLayout(new GridLayout(2, 1));
+        panel.setPreferredSize(new Dimension(500, 500));
+        panel.setLayout(new GridLayout(3, 1));
+        panel.setBackground(Color.black);
+        //startMenu.setLayout(new GridLayout(2, 1));
         playButton.setFocusable(false);
+        playButton.setPreferredSize(new Dimension(500, 50));
+        playButton.setBackground(Color.black);
+        playButton.setForeground(Color.white);
+        playButton.setFont(new Font("Monospace", Font.BOLD, 30));
         instructionButton.setFocusable(false);
-        startMenu.add(playButton);
-        startMenu.add(instructionButton);
+        instructionButton.setBackground(Color.black);
+        instructionButton.setForeground(Color.white);
+        instructionButton.setFont(new Font("Monospace", Font.BOLD, 30));
+        instructionButton.setPreferredSize(new Dimension(500, 50));
+        panel.add(playButton);
+        panel.add(instructionButton, BorderLayout.SOUTH);
+        startMenu.add(panel);
 
         instructions = new JLabel("" + "<html>"
         + "1. Collect all the coins and solve the maze before the timer ends<br>"
