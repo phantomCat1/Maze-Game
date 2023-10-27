@@ -88,7 +88,6 @@ public class Player {
                     board.gameThread = null;
                     gameWindow.winWindow();
                 } 
-                System.out.println(board.coinsCollected);
             
             } else if (key.aKey) {
                 posX -= speed;

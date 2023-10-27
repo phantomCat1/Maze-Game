@@ -1,9 +1,12 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
+import java.util.Scanner;
+
 import javax.swing.*;
 
 /**
@@ -153,15 +156,26 @@ public class GameWindow {
         //change txt file to have the new level
         //maybe implement this as a new class entirely
         //window.dispose();
+        int maxLevelAchieved = 1;
         try {
-            PrintWriter print = new PrintWriter(new FileOutputStream("PlayableLevels.txt"));
-            String newLevel = String.valueOf(currentLevel + 1);
-            print.print(newLevel);
-            print.flush();
-            print.close();
+            Scanner scanner = new Scanner(new File("PlayableLevels.txt"));
+            maxLevelAchieved = scanner.nextInt();
+            scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        if (maxLevelAchieved == currentLevel) {
+            try {
+                PrintWriter print = new PrintWriter(new FileOutputStream("PlayableLevels.txt"));
+                String newLevel = String.valueOf(currentLevel + 1);
+                print.print(newLevel);
+                print.flush();
+                print.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        
 
         JFrame winFrame = new JFrame("Maze Game");
         JPanel panel = new JPanel();
