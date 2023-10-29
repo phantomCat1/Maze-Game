@@ -3,6 +3,9 @@ import java.awt.event.KeyListener;
 
 /**
  * This method checks if movement keys are pressed.
+ * If a key is pressed, the boolean variable of that key is set to true.
+ * These boolean variables ar used in the Player class to indicate that the player is moving
+ * and as such update his coordinates and initiate the movement animation.
  */
 public class KeyHandler implements KeyListener {
     boolean wKey;

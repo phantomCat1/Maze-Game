@@ -1,14 +1,16 @@
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
-
 import javax.imageio.ImageIO;
 
+/**
+ * This class is responsible for creating the maze of the game.
+ * 
+ */
 public class MazeCreator {
     Maze maze;
     int[][] mazeGrid;
@@ -19,6 +21,12 @@ public class MazeCreator {
     int actualLevel;
     String levelFile;
     
+    /**
+     * This is the constructor of the method.
+     * It initiates all the tiles of the map/ maze,
+     * the 2D array that represents the maze and indicates what
+     * text file is to be accessed based on the current level.
+     */
     public MazeCreator(Maze mp, int level) {
         this.maze = mp;
         actualLevel = level / 5;
@@ -39,6 +47,11 @@ public class MazeCreator {
 
     }
 
+    /**
+     * This method creates the 2D array.
+     * If we are playing level 1, the program reads the elements/ map
+     * from the level1.txt file into the 2D array.
+     */
     public void createMazeArray(String levelFile) {
         try {
             Scanner sc = new Scanner(new BufferedReader(new FileReader(levelFile)));
@@ -57,6 +70,13 @@ public class MazeCreator {
     }
 
 
+    /**
+     * Based on the 2D array created previously, this method draws the maze.
+     * While traversing the array, if it encounters a 0, it draws a grass tile
+     * if a 2, then it draws a wall tile, 
+     * if 4, then a coin,
+     * if 8, then a trophy tile, which is the end point the player has to reach.
+     */
     public void draw(Graphics2D g) {
         int posX = 0;
         int posY = 0;

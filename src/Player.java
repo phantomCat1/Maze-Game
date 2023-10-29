@@ -1,11 +1,12 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.*;
 
+/**
+ * This class is responsible for the character movement and 
+ * movement animation.
+ */
 public class Player {
     int posX;
     int posY;
@@ -24,7 +25,12 @@ public class Player {
     boolean coinTouched = false;
     boolean reachedEnd = false;
      
-
+    /**
+     * This is the constructor of the class.
+     * It initializez all the important varibales 
+     * and creates instances of the classes necessary 
+     * for player movement and control over the game.
+     */
     public Player(Maze maze, KeyHandler keyH, GameWindow gw) {
         this.board = maze;
         this.key = keyH;
@@ -46,10 +52,15 @@ public class Player {
     }
 
 
-
+    /**
+     * This method is responsible for updating the player coordinates when
+     * one of the w, a, s, d keys is pressed.
+     */
     public void update() {
         movement = false;
         
+        // If the player presses a key, the movement variable is set to
+        // true, which allows the movement animation to take place.
         if (key.wKey) {
             movement = true;
         } else if (key.sKey) {
@@ -66,12 +77,18 @@ public class Player {
 
         board.checker.checkCollision(this);
 
+        // Player can move only if he doesn't collide with a wall
+        // The code for each key is the same
         if (!collisionOn) {
             if (key.wKey) {
                 posY -= speed;
+                // If player collides with a coin, he collects it
                 if (coinTouched) {
                     board.coinsCollected++;
                 }
+                // If player has collected all coins and has reached the end of 
+                // the maze, in the given time frame, the game stops and the win window
+                // appears.
                 if (reachedEnd && board.coinsCollected == board.coinsExpected) {
                     gameWindow.timer.stop();
                     board.gameThread = null;
@@ -96,7 +113,7 @@ public class Player {
                 }
                 if (reachedEnd && board.coinsCollected == board.coinsExpected) {
                     gameWindow.timer.stop();
-                    board.gameThread = null; // discuss the final details!!!!!!!!!!!!!!!!!!
+                    board.gameThread = null; 
                     gameWindow.winWindow();
                 } 
             
@@ -114,7 +131,8 @@ public class Player {
             }
         }
         
-        // Every 10 pixels the animation will change
+        // Every 10 pixels the character sprite will change
+        // This makes the movement animation possible
         pixelCount++;
         if (pixelCount >= 10) {
             if (animation == 1) {
@@ -129,10 +147,14 @@ public class Player {
     }
 
 
-
+    /**
+     * This method draws the character sprite on the map/ maze.
+     */
     public void draw(Graphics2D g) {
-        //g.setColor(Color.white);
-        //g.fillRect(posX, posY, board.tileSize, board.tileSize);
+        // If player doesn't move, meaning no key is pressed
+        // the normal, stationary sprite is displayed.
+        // Otherwise, every 10 pixels, the character sprite changes,
+        // which creates the movement animation.
         if (!movement) {
             g.drawImage(normal, posX, posY, board.tileSize, board.tileSize, null);
         } else {
@@ -140,7 +162,7 @@ public class Player {
                 g.drawImage(left, posX, posY, board.tileSize, board.tileSize, null);
             } else if (animation == 2) {
                 g.drawImage(right, posX, posY, board.tileSize, board.tileSize, null);
-        }
+            }
         }
 
     }

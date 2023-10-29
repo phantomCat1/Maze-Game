@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.Scanner;
-
 import javax.swing.*;
 
 /**
@@ -105,7 +104,6 @@ public class GameWindow {
      * of the old one.
      */
     public void restartLevel() {
-        //if restart button clicked restart level
         window.dispose();
         new GameWindow().mazeGame(currentLevel);
 
@@ -148,14 +146,23 @@ public class GameWindow {
         });
     }
 
-    
+    /**
+     * This method creates the win window after passing each level.
+     * If the player completes any of the levels, but the last, a JFrame
+     * with the message "You Won" is displayed and has two JButtons:
+     * "nextLevel" allows the player to continue to the next level.
+     * "menu" allows the player to return to the levels' menu.
+     * If the player has completed the final level, then a Jframe with the message
+     * "You Completed the Game" and the same "menu" button mentioned above is created.
+     * Another important functionality is updating the PlayableLevels.txt file.
+     * The method checks the maximum level achieved by the player written in the text file
+     * and compares it with the current level being played. 
+     * If the maximum level achieved is equal to the current level being played, the level
+     * registered in the text file is increased by one.
+     * Otherwise, the maximum level achieved in the text file remains the same.
+     */
     public void winWindow() {
-        //creates win frame with 2 buttons
-        //press menu to go to levels menu
-        //press next level to move to next level
-        //change txt file to have the new level
-        //maybe implement this as a new class entirely
-        //window.dispose();
+      
         int maxLevelAchieved = 1;
         try {
             Scanner scanner = new Scanner(new File("PlayableLevels.txt"));
@@ -194,7 +201,9 @@ public class GameWindow {
         winMessage.setHorizontalAlignment(JLabel.CENTER);
         winMessage.setForeground(new Color(0xffc20e));
         winMessage.setFont(new Font("Monospace", Font.BOLD, 40));
-        JLabel label2 = new JLabel("You Completed the Game!");
+        JLabel label2 = new JLabel("" + "<html>"
+            + "You Completed<br>"
+            + "the Game!</html>");
         label2.setHorizontalAlignment(JLabel.CENTER);
         label2.setForeground(new Color(0xffc20e));
         label2.setFont(new Font("Monospace", Font.BOLD, 30));
@@ -242,11 +251,31 @@ public class GameWindow {
 
     }
 
+    /**
+     * This method creates the lose window of the game.
+     * If the timer of the current level expires, this method is called.
+     * It creates a JFrame which displays the message "You Lost!" and contains
+     * two JButtons.
+     * "menu" allows the player to go back to the levels' menu.
+     * "retry" allows the player to restart the current level by calling on the 
+     * restartLevel() method.
+     */
     public void loseWindow() {
         //2 buttons
         //retry and back to level menu
         JFrame loseFrame = new JFrame("Maze Game");
+        
+        loseFrame.getContentPane().setBackground(new Color(0xd1242c));
+        loseFrame.setPreferredSize(new Dimension(300, 400));
+        loseFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        loseFrame.pack();
+        loseFrame.setLocationRelativeTo(null);
+        loseFrame.setVisible(true);
+        loseFrame.setResizable(false);
+
         JPanel pan = new JPanel();
+        pan.setPreferredSize(new Dimension(300, 50));
+        pan.setLayout(new GridLayout(1, 2));
         JLabel loseMessage = new JLabel("YOU LOST!");
         loseMessage.setForeground(new Color(0xffc20e));
         loseMessage.setFont(new Font("Monospace", Font.BOLD, 40));
@@ -261,21 +290,10 @@ public class GameWindow {
         menu.setForeground(Color.white);
         menu.setFont(new Font("Monospace", Font.BOLD, 20));
         menu.setFocusable(false);
-        pan.setPreferredSize(new Dimension(300, 50));
-        pan.setLayout(new GridLayout(1, 2));
         pan.add(retry);
         pan.add(menu);
         loseFrame.add(loseMessage);
         loseFrame.add(pan, BorderLayout.SOUTH);
-
-
-        loseFrame.getContentPane().setBackground(new Color(0xd1242c));
-        loseFrame.setPreferredSize(new Dimension(300, 400));
-        loseFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        loseFrame.pack();
-        loseFrame.setLocationRelativeTo(null);
-        loseFrame.setVisible(true);
-        loseFrame.setResizable(false);
         
 
         retry.addActionListener(new ActionListener() {
@@ -295,9 +313,6 @@ public class GameWindow {
             }
         });
         
-
-
-
     }
 
 
