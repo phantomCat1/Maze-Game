@@ -11,7 +11,7 @@ public class CollisionChecker {
     /**
      * This is the constructor of the class.
      * It makes an instance of the Maze class, meaning that
-     * it has access to the Player and MAzeCreator class, for which collision
+     * it has access to the Player and MazeCreator class, for which collision
      * is needed.
      */
     public CollisionChecker(Maze board) {

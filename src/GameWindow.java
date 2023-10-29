@@ -253,7 +253,7 @@ public class GameWindow {
 
     /**
      * This method creates the lose window of the game.
-     * If the timer of the current level expires, this method is called.
+     * If the timer of the current level ends, this method is called.
      * It creates a JFrame which displays the message "You Lost!" and contains
      * two JButtons.
      * "menu" allows the player to go back to the levels' menu.
@@ -261,8 +261,7 @@ public class GameWindow {
      * restartLevel() method.
      */
     public void loseWindow() {
-        //2 buttons
-        //retry and back to level menu
+
         JFrame loseFrame = new JFrame("Maze Game");
         
         loseFrame.getContentPane().setBackground(new Color(0xd1242c));

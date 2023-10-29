@@ -35,6 +35,11 @@ public class Player {
         this.board = maze;
         this.key = keyH;
         this.gameWindow = gw;
+        // solidArea represents the player's HitBox
+        // It is smaller than the player in order to make movement
+        // through the tight spaces in the maze easier, so that the player
+        // does'nt have to waste time perfectly alligning the HitBox with the 
+        // pathway in order to pass through.
         solidArea = new Rectangle(8, 16, 32, 32);
        
         
